@@ -1,0 +1,201 @@
+.hovering {
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+.hovering .region {
+  stroke: #000;
+}
+
+.region {
+  fill: #fff;
+  stroke: #000;
+  stroke-miterlimit: 10;
+}
+
+text {
+  fill: black;
+}
+
+/* .hovering polygon {
+  fill: lightslategrey;
+}
+.hovering path {
+  fill: lightslategrey;
+} */
+
+.Portugal .region {
+  fill: var(--Portugal);
+}
+
+.Spain .region {
+  fill: var(--Spain);
+}
+
+.France .region {
+  fill: var(--France);
+}
+
+.Piedmont-Sardinia .region {
+  fill: var(--Piedmont-Sardinia);
+}
+
+.Switzerland .region {
+  fill: var(--Switzerland);
+}
+
+.Papal_States .region {
+  fill: var(--Papal_States);
+}
+
+.Kingdom_of_the_Two_Sicilies .region {
+  fill: var(--Kingdom_of_the_Two_Sicilies);
+}
+
+.Venice .region {
+  fill: var(--Venice);
+}
+
+.United_Netherlands .region {
+  fill: var(--United_Netherlands);
+}
+
+.Small_German_States .region {
+  fill: var(--Small_German_States);
+}
+
+.Palatinate .region {
+  fill: var(--Palatinate);
+}
+
+.Prussia .region {
+  fill: var(--Prussia);
+}
+
+.Saxony .region {
+  fill: var(--Saxony);
+}
+
+.Austria .region {
+  fill: var(--Austria);
+}
+
+.Hanover .region {
+  fill: var(--Hanover);
+}
+
+.Denmark .region {
+  fill: var(--Denmark);
+}
+
+.Poland .region {
+  fill: var(--Poland);
+}
+
+.Ottoman_Empire .region {
+  fill: var(--Ottoman_Empire);
+}
+
+.Britain .region {
+  fill: var(--Britain);
+}
+
+.Sweden .region {
+  fill: var(--Sweden);
+}
+
+.Russia .region {
+  fill: var(--Russia);
+}
+
+.Genoa .region {
+  fill: var(--Genoa);
+}
+
+.Milan .region {
+  fill: var(--Milan);
+}
+
+.Parma .region {
+  fill: var(--Parma);
+}
+
+.Modena .region {
+  fill: var(--Modena);
+}
+
+.Lucca .region {
+  fill: var(--Lucca);
+}
+
+.Tuscany .region {
+  fill: var(--Tuscany);
+}
+
+.Malta .region {
+  fill: var(--Malta);
+}
+
+.Liége .region {
+  fill: var(--Liége);
+}
+
+.Cologne .region {
+  fill: var(--Cologne);
+}
+
+.Trier .region {
+  fill: var(--Trier);
+}
+
+.Mainz .region {
+  fill: var(--Mainz);
+}
+
+.Würzburg .region {
+  fill: var(--Würzburg);
+}
+
+.Ansbach .region {
+  fill: var(--Ansbach);
+}
+
+.Bamberg .region {
+  fill: var(--Bamberg);
+}
+
+.Bayreuth .region {
+  fill: var(--Bayreuth);
+}
+
+.Württemberg .region {
+  fill: var(--Württemberg);
+}
+
+.Westphalia .region {
+  fill: var(--Westphalia);
+}
+
+.Oldenburg .region {
+  fill: var(--Oldenburg);
+}
+
+.Anhalt .region {
+  fill: var(--Anhalt);
+}
+
+.Bavaria .region {
+  fill: var(--Bavaria);
+}
+
+.Salzburg .region {
+  fill: var(--Salzburg);
+}
+
+.Mecklenburg .region {
+  fill: var(--Mecklenburg);
+}
+
+.Münster .region {
+  fill: var(--Münster);
+}
