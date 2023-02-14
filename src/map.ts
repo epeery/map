@@ -298,7 +298,6 @@ export const setupMap = (
     onLeave?: (target: Element, event: Event) => void;
   }
 ) => {
-  let [x, y] = [0, 0];
   let [dx, dy] = [0, 0];
 
   let threshold = 2;
@@ -343,14 +342,8 @@ export const setupMap = (
   const getNation = (state: { [name: string]: string }, element: Element) =>
     state[element.id.replaceAll("_", " ")];
 
-  const gesture = new Gesture(document, {
-    onDrag: ({
-      pinching,
-      cancel,
-      active,
-      offset: [x, y],
-      distance: [ddx, ddy],
-    }) => {
+  new Gesture(document, {
+    onDrag: ({ pinching, cancel, offset: [x, y], distance: [ddx, ddy] }) => {
       if (pinching) return cancel();
       [dx, dy] = [ddx, ddy];
       [x, y] = [x, y];
