@@ -1,16 +1,12 @@
 import "./index.css";
 import { setupMap } from "./map";
 import { setupCountryChooser } from "./countryChooser";
+import { DragGesture } from "@use-gesture/vanilla";
+import anime from "animejs";
 
 const mapElement = document.querySelector<SVGElement>("#map")!;
 
-const countryChooserElement =
-  document.querySelector<HTMLDivElement>("#countryChooser")!;
-
-const countryChooser = setupCountryChooser(countryChooserElement);
-
 setupMap(mapElement, {
-  onClick: (province) => {
-    countryChooser.select(province);
+  onClick: (province, e) => {
   },
 });

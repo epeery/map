@@ -61,7 +61,10 @@ export const setupCountryChooser = (element: HTMLDivElement) => {
       (c) => c !== "hovering"
     )[0];
 
-    const selected = (ev.target as HTMLLIElement).innerHTML.replaceAll(" ", "_");
+    const selected = (ev.target as HTMLLIElement).innerHTML.replaceAll(
+      " ",
+      "_"
+    );
 
     active.classList.remove(currentCountry);
     active.classList.add(selected);

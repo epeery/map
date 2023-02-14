@@ -15,6 +15,7 @@
 
 text {
   fill: black;
+  user-select: none;
 }
 
 /* .hovering polygon {

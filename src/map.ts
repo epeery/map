@@ -1,4 +1,7 @@
+import { Gesture } from "@use-gesture/vanilla";
+import anime from "animejs";
 import "./map.css";
+import { setupCountryChooser } from "./countryChooser";
 
 export const countries = [
   "Portugal",
@@ -295,8 +298,18 @@ export const setupMap = (
     onLeave?: (target: Element, event: Event) => void;
   }
 ) => {
+  let [x, y] = [0, 0];
+  let [dx, dy] = [0, 0];
+
+  let threshold = 2;
+
   const children = Array.from(element.children);
   const provinces = children.slice(1, children.length);
+
+  const countryChooserElement =
+    document.querySelector<HTMLDivElement>("#countryChooser")!;
+
+  const countryChooser = setupCountryChooser(countryChooserElement);
 
   element.style.position = "absolute";
   element.style.top = "0";
@@ -311,7 +324,10 @@ export const setupMap = (
   );
 
   const onClick = (province: Element) => (event: Event) => {
-    callbacks?.onClick?.(province, event);
+    if (dx < threshold || dy < threshold) {
+      countryChooser.select(province);
+      callbacks?.onClick?.(province, event);
+    }
   };
 
   const onEnter = (province: Element) => (event: Event) => {
@@ -326,6 +342,27 @@ export const setupMap = (
 
   const getNation = (state: { [name: string]: string }, element: Element) =>
     state[element.id.replaceAll("_", " ")];
+
+  const gesture = new Gesture(document, {
+    onDrag: ({
+      pinching,
+      cancel,
+      active,
+      offset: [x, y],
+      distance: [ddx, ddy],
+    }) => {
+      if (pinching) return cancel();
+      [dx, dy] = [ddx, ddy];
+      [x, y] = [x, y];
+
+      anime({
+        targets: element,
+        translateX: x,
+        translateY: y,
+        duration: 0,
+      });
+    },
+  });
 
   provinces.forEach((province) => {
     const initialNation = getNation(initialState, province);
