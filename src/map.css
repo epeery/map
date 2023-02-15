@@ -200,3 +200,15 @@ text {
 .Münster .region {
   fill: var(--Münster);
 }
+
+.Osnabrück .region {
+  fill: var(--Osnabrück)
+}
+
+.Baden .region {
+  fill: var(--Baden)
+}
+
+.Hesse-Kassel .region {
+  fill: var(--Hesse-Kassel)
+}

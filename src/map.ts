@@ -265,11 +265,7 @@ export const setupMap = (
 
   const countryChooser = setupCountryChooser(countryChooserElement);
 
-  //   element.style.position = "absolute";
-  //   element.style.top = "0";
-  //   element.style.left = "0";
-  element.style.backgroundColor = "lightskyblue";
-
+  //   const countries = Array.from(new Set(Object.values(initialState)));
   //   countries.map((countryName, i) =>
   //     element.style.setProperty(
   //       `--${countryName.replaceAll(" ", "_")}`,
