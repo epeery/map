@@ -1,6 +1,9 @@
-import { countries } from "./map";
+import { initialState } from "./map";
 
 export const setupCountryChooser = (element: HTMLDivElement) => {
+  const countries = Array.from(new Set(Object.values(initialState)));
+  console.log(countries);
+
   const resultsEl = element.querySelector("ul")!;
 
   let active: Element | null = null;
@@ -28,14 +31,15 @@ export const setupCountryChooser = (element: HTMLDivElement) => {
     render(countries);
   };
 
+  const input = element.querySelector("input")!;
+
   const hide = () => {
     element.style.display = "none";
+    input.value = "";
   };
 
   const backdrop = element.querySelector("#countryChooser-backdrop")!;
   backdrop.addEventListener("click", hide);
-
-  const input = element.querySelector("input")!;
 
   const onChange = () => {
     const query = input.value;

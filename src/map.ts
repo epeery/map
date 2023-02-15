@@ -1,54 +1,7 @@
-import { Gesture } from "@use-gesture/vanilla";
-import anime from "animejs";
+// import { Gesture } from "@use-gesture/vanilla";
+// import anime from "animejs";
 import "./map.css";
 import { setupCountryChooser } from "./countryChooser";
-
-export const countries = [
-  "Portugal",
-  "Spain",
-  "France",
-  "Piedmont-Sardinia",
-  "Switzerland",
-  "Papal States",
-  "Kingdom of the Two Sicilies",
-  "Venice",
-  "United Netherlands",
-  "Small German States",
-  "Palatinate",
-  "Prussia",
-  "Saxony",
-  "Austria",
-  "Hanover",
-  "Denmark",
-  "Poland",
-  "Ottoman Empire",
-  "Britain",
-  "Sweden",
-  "Russia",
-  "Genoa",
-  "Milan",
-  "Parma",
-  "Modena",
-  "Lucca",
-  "Tuscany",
-  "Malta",
-  "Liége",
-  "Cologne",
-  "Trier",
-  "Mainz",
-  "Würzburg",
-  "Ansbach",
-  "Bamberg",
-  "Bayreuth",
-  "Württemberg",
-  "Westphalia",
-  "Oldenburg",
-  "Anhalt",
-  "Bavaria",
-  "Salzburg",
-  "Mecklenburg",
-  "Münster",
-];
 
 export const initialState = {
   Alentejo: "Portugal",
@@ -288,6 +241,12 @@ export const initialState = {
   Salzburg: "Salzburg",
   Mecklenburg: "Mecklenburg",
   Münster: "Münster",
+  Extremadura: "Spain",
+  Osnabrück: "Osnabrück",
+  Baden: "Baden",
+  "Hesse-Kassel": "Hesse-Kassel",
+  Bosnia: "Ottoman Empire",
+  Ekaterinoslav: "Russia",
 };
 
 export const setupMap = (
@@ -298,10 +257,6 @@ export const setupMap = (
     onLeave?: (target: Element, event: Event) => void;
   }
 ) => {
-  let [dx, dy] = [0, 0];
-
-  let threshold = 2;
-
   const children = Array.from(element.children);
   const provinces = children.slice(1, children.length);
 
@@ -310,23 +265,21 @@ export const setupMap = (
 
   const countryChooser = setupCountryChooser(countryChooserElement);
 
-  element.style.position = "absolute";
-  element.style.top = "0";
-  element.style.left = "0";
+  //   element.style.position = "absolute";
+  //   element.style.top = "0";
+  //   element.style.left = "0";
   element.style.backgroundColor = "lightskyblue";
 
-  countries.map((countryName, i) =>
-    element.style.setProperty(
-      `--${countryName.replaceAll(" ", "_")}`,
-      `hsl(${(i / (countries.length - 1)) * 360}, 100%, 50%)`
-    )
-  );
+  //   countries.map((countryName, i) =>
+  //     element.style.setProperty(
+  //       `--${countryName.replaceAll(" ", "_")}`,
+  //       `hsl(${(i / (countries.length - 1)) * 360}, 100%, 50%)`
+  //     )
+  //   );
 
   const onClick = (province: Element) => (event: Event) => {
-    if (dx < threshold || dy < threshold) {
-      countryChooser.select(province);
-      callbacks?.onClick?.(province, event);
-    }
+    countryChooser.select(province);
+    callbacks?.onClick?.(province, event);
   };
 
   const onEnter = (province: Element) => (event: Event) => {
@@ -341,21 +294,6 @@ export const setupMap = (
 
   const getNation = (state: { [name: string]: string }, element: Element) =>
     state[element.id.replaceAll("_", " ")];
-
-  new Gesture(document, {
-    onDrag: ({ pinching, cancel, offset: [x, y], distance: [ddx, ddy] }) => {
-      if (pinching) return cancel();
-      [dx, dy] = [ddx, ddy];
-      [x, y] = [x, y];
-
-      anime({
-        targets: element,
-        translateX: x,
-        translateY: y,
-        duration: 0,
-      });
-    },
-  });
 
   provinces.forEach((province) => {
     const initialNation = getNation(initialState, province);
